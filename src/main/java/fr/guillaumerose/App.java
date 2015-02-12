@@ -1,16 +1,24 @@
 package fr.guillaumerose;
 
-import static com.google.common.collect.Lists.*;
-import static fr.guillaumerose.Map.Direction.*;
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
+import com.google.gson.Gson;
+
+import java.io.File;
+import java.io.IOException;
 
 public class App {
-    public static void main(String[] args) {
-        Map map = new Map(100, 100, newArrayList());
-        Turtle turtle = new Turtle(map, 0, 0, N);
+    public static void main(String[] args) throws Exception {
+        Gson gson = new Gson();
+        Turtle turtle = gson.fromJson(firstLine(args[0]), Turtle.class);
         turtle.forward();
         turtle.turnRight();
         turtle.forward();
         turtle.forward();
         turtle.forward();
+    }
+
+    private static String firstLine(String fileName) throws IOException {
+        return Files.readLines(new File(fileName), Charsets.UTF_8).get(0);
     }
 }

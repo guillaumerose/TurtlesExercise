@@ -1,4 +1,4 @@
 Turtles
 ------
 
-Run : ./run.sh
+Run : ./run.sh turtle.json
