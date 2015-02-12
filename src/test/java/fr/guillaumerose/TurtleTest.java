@@ -66,4 +66,41 @@ public class TurtleTest {
         turtle.forward();
         assertThat(turtle).isEqualTo(new Turtle(map, 0, 0, W));
     }
+
+    @Test
+    public void should_be_able_to_turn_left() throws Exception {
+        Turtle turtle = new Turtle(map, 0, 0, N);
+        turtle.turnLeft();
+        assertThat(turtle.getDirection()).isEqualTo(W);
+    }
+
+    @Test
+    public void should_be_able_to_turn_right() throws Exception {
+        Turtle turtle = new Turtle(map, 0, 0, E);
+        turtle.turnRight();
+        assertThat(turtle.getDirection()).isEqualTo(S);
+    }
+
+    @Test
+    public void should_come_back_to_first_direction_after_4_turns() throws Exception {
+        Turtle turtle = new Turtle(map, 0, 0, S);
+        turtle.turnLeft();
+        turtle.turnLeft();
+        turtle.turnLeft();
+        turtle.turnLeft();
+        assertThat(turtle.getDirection()).isEqualTo(S);
+        turtle.turnRight();
+        turtle.turnRight();
+        turtle.turnRight();
+        turtle.turnRight();
+        assertThat(turtle.getDirection()).isEqualTo(S);
+    }
+
+    @Test
+    public void should_come_back_to_first_direction_after_left_and_right_turns() throws Exception {
+        Turtle turtle = new Turtle(map, 0, 0, S);
+        turtle.turnLeft();
+        turtle.turnRight();
+        assertThat(turtle.getDirection()).isEqualTo(S);
+    }
 }

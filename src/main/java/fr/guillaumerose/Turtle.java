@@ -30,10 +30,10 @@ public class Turtle {
     }
 
     public void turnLeft() {
-
+        direction = direction.getLeft();
     }
 
     public void turnRight() {
-
+        direction = direction.getRight();
     }
 }
