@@ -2,11 +2,12 @@ package fr.guillaumerose;
 
 import org.junit.Test;
 
+import static com.google.common.collect.Lists.*;
 import static fr.guillaumerose.Map.Direction.*;
 import static org.assertj.core.api.Assertions.*;
 
 public class TurtleTest {
-    private final Map map = new Map(50, 100);
+    private final Map map = new Map(50, 100, newArrayList());
 
     @Test
     public void should_go_forward() throws Exception {

@@ -1,5 +1,8 @@
 package fr.guillaumerose;
 
+import java.util.List;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
@@ -24,10 +27,25 @@ public class Map {
         }
     }
 
+    @Data
+    @AllArgsConstructor
+    public static class RestrictedArea {
+        private final int minX;
+        private final int minY;
+        private final int maxX;
+        private final int maxY;
+    }
+
     private final int maxX;
     private final int maxY;
+    private final List<RestrictedArea> areas;
 
     public boolean canGo(int x, int y) {
-        return 0 <= x && x <= maxX && 0 <= y && y <= maxY;
+        return !areas.stream().anyMatch(area -> between(x, area.getMinX(), area.getMaxX()) && between(y, area.getMinY(), area.getMaxY())) //
+                && between(x, 0, maxX) && between(y, 0, maxY);
+    }
+
+    private static boolean between(int x, int min, int max) {
+        return min <= x && x <= max;
     }
 }
