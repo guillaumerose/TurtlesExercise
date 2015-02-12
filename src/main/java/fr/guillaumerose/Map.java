@@ -26,4 +26,8 @@ public class Map {
 
     private final int maxX;
     private final int maxY;
+
+    public boolean canGo(int x, int y) {
+        return 0 <= x && x <= maxX && 0 <= y && y <= maxY;
+    }
 }

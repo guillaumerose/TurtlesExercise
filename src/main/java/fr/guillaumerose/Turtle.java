@@ -20,16 +20,16 @@ public class Turtle {
         LOGGER.info("Going forward. " + summary());
         switch (direction) {
         case N:
-            y = map.getMaxY() >= y + 1 ? y + 1 : y;
+            y = map.canGo(x, y + 1) ? y + 1 : y;
             break;
         case E:
-            x = map.getMaxX() >= x + 1 ? x + 1 : x;
+            x = map.canGo(x + 1, y) ? x + 1 : x;
             break;
         case W:
-            x = 0 <= x - 1 ? x - 1 : x;
+            x = map.canGo(x - 1, y) ? x - 1 : x;
             break;
         case S:
-            y = 0 <= y - 1 ? y - 1 : y;
+            y = map.canGo(x, y - 1) ? y - 1 : y;
             break;
         }
     }
